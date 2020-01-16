@@ -17,7 +17,7 @@
     <br>
     <br>
     {% if alert %}
-    <div class="alert alert-success" role="alert">{{ alert }}</div>
+    <div class="alert alert-success" role="alert">{{ alert|e }}</div>
     {% endif %}
     <br>
     <div class="container">

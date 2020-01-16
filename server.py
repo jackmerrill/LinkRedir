@@ -1,4 +1,4 @@
-from flask import Flask, escape, request, render_template, redirect
+from flask import Flask, escape, request, render_template, redirect, escape
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -8,9 +8,9 @@ db = SQLAlchemy(app)
 
 class Links(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    link = db.Column(db.String(512))
-    redir = db.Column(db.String(1024))
-    metatitle = db.Column(db.String(512))
+    link = db.Column(db.String(512)) #shortlink
+    redir = db.Column(db.String(1024)) #link to redir
+    metatitle = db.Column(db.String(512)) #meta stuff
     metadesc = db.Column(db.String(512))
     metaurl = db.Column(db.String(512))
     metaimg = db.Column(db.String(512))
@@ -42,11 +42,14 @@ def hello():
             metaimg=None
 
         # haha bad code
-
+        # check if exists
+        exists = db.session.query(Links.link).filter_by(link=request.form['weblink']).scalar() is not None
+        if exists:
+            return render_template("index.html", alert=escape('Error! Link already exists: https://go.jackmerrill.com/{0}. You can make a new link if you would like.').format(request.form["weblink"]))
         newLink = Links(link=request.form["weblink"], redir=request.form["link"], metatitle=metatitle, metadesc=metadesc, metaurl=metaurl, metaimg=metaimg)
         db.session.add(newLink)
         db.session.commit()
-        return render_template("index.html", alert='Success! Link is https://go.jackmerrill.com/{0}').format(request.form["weblink"])
+        return render_template("index.html", alert=escape('Success! Link is https://go.jackmerrill.com/{0}').format(request.form["weblink"]))
     return render_template("index.html")
 
 @app.route("/<link>")
