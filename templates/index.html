@@ -24,15 +24,35 @@
         <div class="jumbotron">
             <form action="/" method="POST">
                 <div class="form-group">
-                    <label for="link">Link to Redirect</label>
-                    <input type="text" class="form-control" id="link" aria-describedby="linkHelp" name="link">
+                    <label for="link">Link to Redirect*</label>
+                    <input type="text" class="form-control" id="link" aria-describedby="linkHelp" name="link" required>
                     <small id="linkHelp" class="form-text text-muted">i.e. https://google.com</small>
                 </div>
                 <div class="form-group">
-                        <label for="weblink">Link Name</label>
-                        <input type="text" class="form-control" id="weblink" aria-describedby="weblinkHelp" name="weblink">
+                        <label for="weblink">Link Name*</label>
+                        <input type="text" class="form-control" id="weblink" aria-describedby="weblinkHelp" name="weblink" required>
                         <small id="weblinkHelp" class="form-text text-muted">i.e. https://go.jackmerrill.com/<b>ThisIsATest</b></small>
                 </div>
+
+                <hr class="my-4">
+
+                <div class="form-group">
+                        <label for="metatitle">Meta Title</label>
+                        <input type="text" class="form-control" id="metatitle" aria-describedby="" name="metatitle">
+                </div>
+                <div class="form-group">
+                        <label for="metadesc">Meta Description</label>
+                        <input type="text" class="form-control" id="metadesc" aria-describedby="" name="metadesc">
+                </div>
+                <div class="form-group">
+                        <label for="metaurl">Meta URL</label>
+                        <input type="text" class="form-control" id="metaurl" aria-describedby="" name="metaurl">
+                </div>
+                <div class="form-group">
+                        <label for="metaimg">Meta Image (URL ONLY)</label>
+                        <input type="text" class="form-control" id="metaimg" aria-describedby="" name="metaimg">
+                </div>
+                <p>* = required</p>
                 <button type="submit" class="btn btn-success">Submit</button>
             </form>            
         </div>

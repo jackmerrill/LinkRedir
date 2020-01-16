@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:title" content="{{ metatitle }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ metaurl }}" />
+    <meta property="og:image" content="{{ metaimg }}" />
+    <meta property="og:description" content="{{ metadesc }}" />
+    <title>{{ metatitle }}</title>
+</head>
+<body>
+    true
+    <script>
+        setTimeout(function(){
+            window.location.href = "{{ redir }}";
+        }, 50)
+    </script>
+</body>
+</html>
